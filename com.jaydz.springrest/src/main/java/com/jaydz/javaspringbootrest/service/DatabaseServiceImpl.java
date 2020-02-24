@@ -29,7 +29,6 @@ public class DatabaseServiceImpl implements DatabaseService {
 	public boolean queryByEmailAndSave(User u, PasswordStorage storage) {
 		String email = u.getEmail();
 		String foundEmail = userRepo.getByEmail(email);
-				
 		if (foundEmail == null) {
 			passwordRepo.save(storage);
 			userRepo.save(u);
@@ -39,10 +38,10 @@ public class DatabaseServiceImpl implements DatabaseService {
 		}
 	}
 	
-	
-	public boolean updateLoggedIn(User u) {
-	  userRepo.save(u);
-	  return true;
+	@Transactional
+	public void updateLoggedIn(User u) {
+	  User found = userRepo.getOne(u.getId());
+	  found.setStayLoggedIn(u.getStayLoggedIn());
 	}
 	
 	

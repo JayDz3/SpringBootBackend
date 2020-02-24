@@ -32,14 +32,24 @@ public class UserController {
 		return service.queryByEmailAndSave(user, storage);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping(path="/update")
+	public @ResponseBody boolean updateUser(@RequestBody User u) {
+		service.updateLoggedIn(u);
+		return true;
+	}
+	
 	public User updatedUser(User u) {
 		User user = new User();
 		user.setFirstName(u.getFirstName());
 		user.setLastName(u.getLastName());
 		user.setEmail(u.getEmail());
 		user.setPassword("");
+		user.setActive(u.getActive());
+		user.setEmailConfirmed(false);
 		user.setIsLoggedIn(false);
 		user.setStayLoggedIn(false);
+		user.setCreated(u.getCreated());
 		return user;
 	}
 	

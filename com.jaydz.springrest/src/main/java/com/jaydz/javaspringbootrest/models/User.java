@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -14,11 +15,12 @@ import lombok.Data;
 public class User {
 
 	private @Id @GeneratedValue Long id;
-	private String firstName;
+	private @NotNull String firstName;
 	private String lastName;
 	private @Column(unique=true) String email;
 	private String password;
-	private boolean emailConfirmed, isLoggedIn, stayLoggedIn;
+	private boolean emailConfirmed, isLoggedIn, stayLoggedIn, active;
+	private String created;
 	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -36,6 +38,10 @@ public class User {
 		this.password = password;
 	}
 	
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
 	public void setEmailConfirmed(boolean emailConfirmed) {
 		this.emailConfirmed = emailConfirmed;
 	}
@@ -46,6 +52,10 @@ public class User {
 	
 	public void setStayLoggedIn(boolean stayLoggedIn) {
 		this.stayLoggedIn = stayLoggedIn;
+	}
+	
+	public void setCreated(String created) {
+		this.created = created;
 	}
 	
 	public Long getId() {
@@ -68,6 +78,10 @@ public class User {
 		return this.password;
 	}
 
+	public boolean getActive() {
+		return this.active;
+	}
+	
 	public boolean getEmailConfirmed() {
 		return this.emailConfirmed;
 	}
@@ -77,5 +91,9 @@ public class User {
 	
 	public boolean getStayLoggedIn() {
 		return this.stayLoggedIn;
+	}
+	
+	public String getCreated() {
+		return this.created;
 	}
 }
