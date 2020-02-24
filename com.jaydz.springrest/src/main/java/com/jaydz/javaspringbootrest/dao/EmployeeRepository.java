@@ -1,4 +1,4 @@
-package com.jaydz.javaspringbootrest.data;
+package com.jaydz.javaspringbootrest.dao;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

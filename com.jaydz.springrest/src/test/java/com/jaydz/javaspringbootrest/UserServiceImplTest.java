@@ -12,7 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.jaydz.javaspringbootrest.data.UserRepository;
+import com.jaydz.javaspringbootrest.dao.UserRepository;
 import com.jaydz.javaspringbootrest.models.User;
 import com.jaydz.javaspringbootrest.service.DatabaseService;
 import com.jaydz.javaspringbootrest.service.DatabaseServiceImpl;

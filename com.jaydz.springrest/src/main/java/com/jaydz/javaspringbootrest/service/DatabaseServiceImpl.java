@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jaydz.javaspringbootrest.data.EmployeeRepository;
-import com.jaydz.javaspringbootrest.data.PasswordRepository;
-import com.jaydz.javaspringbootrest.data.UserRepository;
+import com.jaydz.javaspringbootrest.dao.EmployeeRepository;
+import com.jaydz.javaspringbootrest.dao.PasswordRepository;
+import com.jaydz.javaspringbootrest.dao.UserRepository;
 import com.jaydz.javaspringbootrest.models.Employee;
 import com.jaydz.javaspringbootrest.models.PasswordStorage;
 import com.jaydz.javaspringbootrest.models.User;
