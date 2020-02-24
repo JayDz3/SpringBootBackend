@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jaydz.javaspringbootrest.dao.EmployeeRepository;
 import com.jaydz.javaspringbootrest.dao.PasswordRepository;
 import com.jaydz.javaspringbootrest.dao.UserRepository;
-import com.jaydz.javaspringbootrest.models.Employee;
 import com.jaydz.javaspringbootrest.models.PasswordStorage;
 import com.jaydz.javaspringbootrest.models.User;
 
@@ -17,8 +15,6 @@ public class DatabaseServiceImpl implements DatabaseService {
 	/* REPOSITORIES */
 	@Autowired
 	private UserRepository userRepo;
-	@Autowired
-	private EmployeeRepository empRepo;
 	@Autowired
 	private PasswordRepository passwordRepo;
 
@@ -39,25 +35,15 @@ public class DatabaseServiceImpl implements DatabaseService {
 	}
 	
 	@Transactional
-	public void updateLoggedIn(User u) {
+	public boolean updateLoggedIn(User u) {
 	  User found = userRepo.getOne(u.getId());
 	  found.setStayLoggedIn(u.getStayLoggedIn());
+	  return true;
 	}
 	
 	
 	@Transactional(readOnly=true)
 	public Iterable<User> getUsers() {
 		return userRepo.findAll();
-	}
-	
-	
-	/*   Employee Operations   */
-	public void saveEmployee(Employee emp) {
-	    empRepo.save(emp);
-	}
-	
-	@Transactional(readOnly=true)
-	public Iterable<Employee> getEmployees() {
-		return empRepo.findAll();
 	}
 }
